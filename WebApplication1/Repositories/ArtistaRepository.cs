@@ -4,7 +4,7 @@ namespace WebApplication1.Repositories
 {
     public class ArtistaRepository
     {
-        private int _indiceId = 1;
+        private static int _indiceId = 1;
         private static List<Artista> _artistas = new();
         public Artista Criar(Artista artista) 
         { 
@@ -41,6 +41,11 @@ namespace WebApplication1.Repositories
                 return _artistas.Where(a => a.Nome.Contains(filtro)).ToList();
             }
             return _artistas;
+        }
+
+        public Artista ObterPorId (int artistaId)
+        {
+            return _artistas.FirstOrDefault(lista => lista.Id == artistaId);
         }
     }
 }
